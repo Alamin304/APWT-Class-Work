@@ -1,31 +1,36 @@
-@extends('layouts.app')
+@extends('products.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-            </div>
-        </div>
-    </div>
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+   <div class="pull-left">
+       <h2>Product CURD</h2>
+</div>
+<div class="row">
+    <div class ="col-lg-12 margin-tb">
+        <div class="pull-right">
+            <a class="btn btn-success"href="{{route('products.create')}}">Creat New Product</a>
+</div>
+</div>
+</div>
+@if ($message=Session::get('success'))
+<div class="alert alert-success">
+    <p>{{$message}}</p>
     @endif
-
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
+            <th>NO</th>
             <th>Name</th>
+            <th>Price</th>
+            <th>qty</th>
             <th>description</th>
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($products as $product)
+            <th width="288px">Action</th>
+</tr>
+@foreach($)
+($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
+            <td>{{ $product->price }}</td>
+            <td>{{ $product->qty}}</td>
             <td>{{ $product->description }}</td>
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
@@ -37,10 +42,6 @@
                 </form>
             </td>
         </tr>
-        @endforeach
-
-    </table>
-    {{ $products->links() }}
-
 
 @endsection
+</table>
